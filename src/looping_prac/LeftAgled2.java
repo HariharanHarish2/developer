@@ -7,14 +7,14 @@ public class LeftAgled2{
         System.out.print("Enter n: ");
         int n = sc.nextInt();
 
-        int i, j; // declare loop variables once
+        int i, j; 
 
-        for (i =n; i>=1; i--) {  // loop for rows
+        for (i =n; i>=1; i--) {  // rows
             // print spaces
             for (j = 1; j <= n - i; j++) {
                 System.out.print(" ");
             }
-            // print stars
+           
             for (j = 1; j <=2*i-1; j++) {
                 System.out.print("*");
             }
