@@ -1,0 +1,24 @@
+package day3;
+
+public class palindromCheck {
+public static void main(String[] args) {
+	String s="radar";
+	int len=s.length();
+	int left,right;
+	left=0;
+	right=len-1;
+	boolean ispalindrome=true;
+	while (left<right) {
+		if(s.charAt(left)!=s.charAt(right)) {
+			System.out.println(s+"Not palindrome");
+			ispalindrome=false;
+			break;
+		}
+		left++;
+		right--;
+	}
+	if(ispalindrome) {
+		System.out.println(s +"Is palindrome");
+	}
+}
+}
