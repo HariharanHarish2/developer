@@ -27,7 +27,7 @@ public class BinarySearch {
         		 Scanner sc = new Scanner(System.in);
         		 System.out.print("Enter key to search");
         		 int key =sc.nextInt();
-        		 int pos=binarysearch(numbers,key);
+        		 int pos=bin_search(numbers,key);
         		 System.out.println("Position="+pos);
 
       
