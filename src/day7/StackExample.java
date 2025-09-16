@@ -19,5 +19,14 @@ public class StackExample {
 
         boolean isEmpty = stack.isEmpty();
         System.out.println("Is Stack Empty? " + isEmpty);
+        int size = stack.size();
+        System.out.println("Stack Size: " + size);
+
+        boolean contains20 = stack.contains(20);
+        System.out.println("Stack contains 20? " + contains20);
+
+        stack.clear();
+        System.out.println("Stack after clear: " + stack);
+
     }
 }
