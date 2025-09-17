@@ -62,15 +62,37 @@ public class LInkedListImplementation {
             return false;
         }
     }
-    //size
+
+    // size
     public int size() {
-    	int count = 0;
-    	Node curr = head;
-    	while (curr != null) {
-    		count++;
-    		curr = curr.next;
-    	}
-    	return count;
+        int count = 0;
+        Node curr = head;
+        while (curr != null) {
+            count++;
+            curr = curr.next;
+        }
+        return count;
+    }
+
+    // reverse
+    public Node reverse() {
+        if (head == null) {
+            System.out.println("List is Empty.....");
+            return null;
+        } else {
+            Node prev = null;
+            Node curr = head;
+            Node nextNode = null;
+
+            while (curr != null) {
+                nextNode = curr.next;
+                curr.next = prev;
+                prev = curr;
+                curr = nextNode;
+            }
+            head = prev;  // update head
+            return head;
+        }
     }
 
     public void addNode(int val) {
@@ -100,6 +122,39 @@ public class LInkedListImplementation {
         System.out.print("null");
     }
 
+    public void traverseByNode(Node head) {
+        if (head == null) {
+            System.out.print("list is empty");
+            return;
+        }
+        Node current = head;
+        while (current != null) {
+            System.out.print(current.data + "->");
+            current = current.next;
+        }
+        System.out.print("null");
+    }
+
+    // ✅ find minimum element
+    public int findMinimum() {
+        if (head == null) {
+            System.out.println("List is Empty...");
+            return Integer.MIN_VALUE;  // sentinel
+        }
+
+        int min = head.data;
+        Node curr = head.next;
+
+        while (curr != null) {
+            if (curr.data < min) {
+                min = curr.data;
+            }
+            curr = curr.next;
+        }
+
+        return min;
+    }
+
     public static void main(String[] args) {
         LInkedListImplementation Linkedlist = new LInkedListImplementation();
         Linkedlist.addNode(25);
@@ -108,12 +163,15 @@ public class LInkedListImplementation {
         Linkedlist.addNode(65);
         Linkedlist.addNode(55);
         Linkedlist.traverse();
+
         Linkedlist.insertAtBegining(5);
         System.out.println();
         Linkedlist.traverse();
+
         Linkedlist.deleteAtBegining();
         System.out.println();
         Linkedlist.traverse();
+
         Linkedlist.deleteAtEnd();
         System.out.println();
         Linkedlist.traverse();
@@ -122,6 +180,16 @@ public class LInkedListImplementation {
         System.out.println();
         System.out.println("Search 45: " + Linkedlist.search(Linkedlist.head, 45));
         System.out.println("Search 100: " + Linkedlist.search(Linkedlist.head, 100));
-        System.out.println("count of list:" + Linkedlist.size());
+        System.out.println("Count of list: " + Linkedlist.size());
+
+        // reverse demo
+        System.out.println("\nReversing list...");
+        Node result = Linkedlist.reverse();   
+        Linkedlist.traverse();
+        System.out.println("\nTraversing using result Node:");
+        Linkedlist.traverseByNode(result);    
+
+        //  find minimum element
+        System.out.println("\nMinimum element in LinkedList: " + Linkedlist.findMinimum());
     }
 }
