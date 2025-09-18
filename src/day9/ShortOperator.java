@@ -38,6 +38,7 @@ public class ShortOperator {
     }
     public static int searchTarget(ArrayList<Integer> arr,int target) {
 //   	return arr.indexOf(target);
+    	
 for(int i=0;i < arr.size(); i++) {
 	if(target == arr.get(i)) {
 		return i;
