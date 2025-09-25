@@ -3,7 +3,7 @@ package day12;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class TreeImplementation {
+public class TreeImplement {
     class Node {
         int data;
         Node left, right;
@@ -15,7 +15,6 @@ public class TreeImplementation {
     }
 
     Node root;
-
 
     public void addNode(int val) {
         Node newNode = new Node(val);
@@ -66,7 +65,6 @@ public class TreeImplementation {
         System.out.println();
     }
 
-
     public boolean search(int target) {
         if (root == null) {
             System.out.println("Tree is Empty....");
@@ -94,23 +92,54 @@ public class TreeImplementation {
         }
     }
 
+    // 🔹 Find Minimum value in tree
+    public int findMin() {
+        if (root == null) throw new RuntimeException("Tree is empty!");
+        int min = root.data;
+
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+
+        while (!queue.isEmpty()) {
+            Node temp = queue.remove();
+            if (temp.data < min) min = temp.data;
+            if (temp.left != null) queue.add(temp.left);
+            if (temp.right != null) queue.add(temp.right);
+        }
+
+        return min;
+    }
+
+    // 🔹 Find Maximum value in tree
+    public int findMax() {
+        if (root == null) throw new RuntimeException("Tree is empty!");
+        int max = root.data;
+
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+
+        while (!queue.isEmpty()) {
+            Node temp = queue.remove();
+            if (temp.data > max) max = temp.data;
+            if (temp.left != null) queue.add(temp.left);
+            if (temp.right != null) queue.add(temp.right);
+        }
+
+        return max;
+    }
+
     public static void main(String[] args) {
         TreeImplementation tree = new TreeImplementation();
-        tree.addNode(1);
-        tree.addNode(2);
-        tree.addNode(3);
-        tree.addNode(6);
-        tree.addNode(8);
+        int[] values = {15, 50, 23, 34, 51, 2, 1, 4, 5, 6};
+        for (int v : values) {
+            tree.addNode(v);
+        }
 
         System.out.println("Level Order Traversal:");
         tree.levelOrderTraversal();
         System.out.println();
 
-        System.out.println("Searcah 6? " + tree.search(6));
-        System.out.println("Search 7? " + tree.search(7));
-        System.out.println("Pre Order Traversal: " );
-        tree.preOrder(tree.root);
-
-
+        System.out.println("Minimum node: " + tree.findMin());
+        System.out.println("Maximum node: " + tree.findMax());
     }
 }
